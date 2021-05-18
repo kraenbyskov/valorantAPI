@@ -1,3 +1,21 @@
 .Portrait {
     width:100px;
 }
+
+
+body {
+    background:darkgray;
+}
+
+#root {
+    display:grid;
+    grid-template-columns: repeat(3, 33.3333333%);
+    gap:30px;
+}
+
+.card {
+    width:100%;
+    background:white;
+    padding:10px;
+    box-shadow: 4px 4px 10px black;
+}
