@@ -26,6 +26,8 @@ FetchAgent.then((agent) => {
 		src: fullPortrait
 	});
 
+
+
 	Container.appendChild(Title);
 	Container.appendChild(Portrait);
 	Root.appendChild(Container);

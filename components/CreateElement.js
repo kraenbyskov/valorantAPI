@@ -1,5 +1,5 @@
 
-const CreateElement = ({ elmt = "div", content = "", Attribute, className, src = "" }) => {
+const CreateElement = ({ elmt = "div", content = "", Attribute, ID, className, src = "" }) => {
 
     let CreateElmt = document.createElement(elmt);
 
@@ -7,8 +7,12 @@ const CreateElement = ({ elmt = "div", content = "", Attribute, className, src =
         if (src) {
             CreateElmt.src =  src
         } else {
-            CreateElmt.src = "../image/fallback.jpg"
+            CreateElmt.src = "../image/fallback.jpeg"
         }
+    }
+
+    if (ID) {
+        CreateElmt.setAttribute("id", ID)
     }
     if (elmt === "a") {
         CreateElmt.href = src
