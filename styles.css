@@ -5,11 +5,12 @@
 
 body {
     background:darkgray;
+    margin:0px;
 }
 
 #root {
     display:grid;
-    grid-template-columns: repeat(3, 33.3333333%);
+    grid-template-columns: repeat(2, 50%);
     gap:30px;
 }
 

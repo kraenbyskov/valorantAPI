@@ -2,7 +2,6 @@ const FetchMyData = async ({Endpoint}) => {
     const startUrl = "https://valorant-api.com/v1/"
     const url = `${startUrl}${Endpoint}`;
 
-
     const fetchMyData = new Promise((resolve, reject) => {
         fetch(url)
             .then((response) => response.json())

@@ -3,20 +3,20 @@ import FetchMyData from './components/FetchMyData.js';
 
 const root = document.getElementById('root');
 
-
 /* ==========================================================================
    Agents Section
    ========================================================================== */
-
-
-
 
 const agentsFetch = FetchMyData({ Endpoint: 'agents' });
 
 agentsFetch.then((data) => {
 	console.log(data);
-	data.data.map(({ developerName, fullPortrait, abilities }) => {
-		const Container = CreateElement({ className: 'card' });
+	data.data.map(({ developerName, fullPortrait, abilities, uuid }) => {
+		const Card = CreateElement({
+			className: 'card',
+			elmt: 'a',
+			src: `./agent.html?id=${uuid}`
+		});
 
 		const Title = CreateElement({
 			content: developerName,
@@ -40,23 +40,11 @@ agentsFetch.then((data) => {
 			abilitieContainer.appendChild(abilitieName);
 		});
 
-		Container.appendChild(Portrait);
-		Container.appendChild(Title);
-		Container.appendChild(abilitieContainer);
+		Card.appendChild(Portrait);
+		Card.appendChild(Title);
+		Card.appendChild(abilitieContainer);
 		if (developerName !== 'Hunter_NPE') {
-			root.appendChild(Container);
+			root.appendChild(Card);
 		}
 	});
 });
-
-/* ==========================================================================
-   Weapons Section
-   ========================================================================== */
-
-
-
-const weaponsFetch = FetchMyData({ Endpoint: 'weapons' });
-
-weaponsFetch.then((data) => {
-  console.log(data)
-})
