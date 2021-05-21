@@ -22,15 +22,15 @@ const FetchAgents = () => {
   agentsFetch.then((data) => {
     console.log(data);
     data.data.map(({ developerName, displayIcon, abilities, role, uuid }) => {
+      //   const Card = CreateElement({
+      //     className: "card",
+      //     elmt: "a",
+      //     src: `./agent.html?id=${uuid}`,
+      //   });
+
       const Card = CreateElement({
         className: "card",
-        elmt: "a",
-        src: `./agent.html?id=${uuid}`,
       });
-
-      // const Card = CreateElement({
-      // className: 'card'
-      // 	});
 
       /* Click Function til at vise single Agent */
       Card.addEventListener("click", () => FetchSingleAgent(uuid));
@@ -47,7 +47,6 @@ const FetchAgents = () => {
         className: "Portrait",
         src: displayIcon,
       });
-
       /* Mapper igennem alle Abilities */
       abilities.map((abilitie) => {
         const abilityCard = CreateElement({ className: "abilityIcons" });
