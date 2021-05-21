@@ -1,7 +1,11 @@
 /* Importer de functioner vi skal bruge */
 import CreateElement from './components/CreateElement.js';
 import FetchMyData from './components/FetchMyData.js';
+import ParalaxImage from "./components/BannerImage.js"
 /* Griber fat i vores Root Div */
+
+ParalaxImage()
+
 const root = document.getElementById('root');
 
 /* ==========================================================================
@@ -16,7 +20,8 @@ const FetchAgents = () => {
   
   /* Bruger den data vi får ud at vores Fetch */
 	agentsFetch.then((data) => {
-    data.data.map(({ developerName, fullPortrait, abilities, uuid }) => {
+    console.log(data)
+    data.data.map(({ developerName, displayIcon, abilities,role, uuid }) => {
       const Card = CreateElement({
         className: 'card'
 			});
@@ -28,27 +33,42 @@ const FetchAgents = () => {
         content: developerName,
 				elmt: 'h1'
 			});
+ 
       
 			const abilitieContainer = CreateElement({ className: 'abilitieCard' });
 
 			const Portrait = CreateElement({
 				elmt: 'img',
 				className: 'Portrait',
-				src: fullPortrait
+				src: displayIcon
 			});
-
+      
       /* Mapper igennem alle Abilities */
 			abilities.map((abilitie) => {
-        const abilitieName = CreateElement({
-          content: abilitie.displayName,
-					elmt: 'p'
-				});
-				abilitieContainer.appendChild(abilitieName);
+        const abilityCard = CreateElement({ className: "abilityIcons"})
+        const abilitieIcon = CreateElement({
+          elmt: 'img',
+          className: 'Portrait',
+          src: abilitie.displayIcon
+        });
+        if(abilitie.displayIcon) {
+          abilityCard.appendChild(abilitieIcon);
+        }
+				abilitieContainer.appendChild(abilityCard);
+
 			});
       
       /* Tilføjer de ting vi har oprettet */
 			Card.appendChild(Portrait);
 			Card.appendChild(Title);
+      if(role) {
+        const Role = CreateElement({
+          content: role.displayName,
+          elmt: 'h4'
+        });
+        Card.appendChild(Role);
+
+      }
 			Card.appendChild(abilitieContainer);
       
       /* Kigger om developerName har navnet Hunter_NPE hvis det ikke har appender det til vores Root Div */

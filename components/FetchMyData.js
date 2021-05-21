@@ -1,4 +1,4 @@
-const FetchMyData = async ({Endpoint}) => {
+const FetchMyData = ({Endpoint}) => {
     const startUrl = "https://valorant-api.com/v1/"
     const url = `${startUrl}${Endpoint}`;
 
